@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; img-src 'self' data:; connect-src 'self' https://cloud.umami.is;" />
+
+  <title>Privacy Policy | RiskHelper.ai</title>
+  <meta name="description" content="RiskHelper.ai privacy policy — how we collect, use, and protect your data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .policy-hero {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--indigo) 100%);
+      padding: 60px 0 48px;
+    }
+
+    .policy-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .policy-hero .effective-date {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .policy-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+
+    .policy-toc {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+
+    .policy-toc h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .policy-toc ol {
+      padding-left: 18px;
+    }
+
+    .policy-toc li {
+      margin-bottom: 6px;
+    }
+
+    .policy-toc a {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .policy-toc a:hover {
+      text-decoration: underline;
+    }
+
+    .policy-section {
+      margin-bottom: 48px;
+    }
+
+    .policy-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 20px 0 8px;
+    }
+
+    .policy-section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 12px;
+    }
+
+    .policy-section ul,
+    .policy-section ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .policy-section li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+    }
+
+    .policy-section a {
+      color: var(--blue);
+    }
+
+    .policy-callout {
+      background: var(--blue-lt);
+      border-left: 3px solid var(--blue);
+      padding: 14px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+      color: var(--text-mid);
+      margin: 16px 0;
+      line-height: 1.6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+
+    th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+      vertical-align: top;
+    }
+
+    @media (max-width: 768px) {
+      .policy-body {
+        padding: 32px 20px 60px;
+      }
+    }
+  </style>
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="539d8b41-ef4f-4463-9d4b-42e563768538"></script>
+
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="logo-lockup" aria-label="RiskHelper.ai home">
+        <img class="logo-img"
+          src="data:image/png;base64,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"
+          alt="RiskHelper.ai logo" />
+        <span class="logo-wordmark">Risk<span>Helper</span>.ai</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="index.html#founders">About</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="assessment.html" class="btn btn--primary" style="padding:8px 18px;font-size:13px;">Try it free →</a>
+        <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html#how-it-works">How it works</a>
+    <a href="index.html#founders">About</a>
+    <a href="contact.html">Contact us</a>
+    <a href="assessment.html" style="color:var(--blue);font-weight:700;">Try it free →</a>
+  </div>
+
+  <div class="policy-hero">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="effective-date">Effective date: 1 January 2025 · Last updated: February 2025</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="policy-body">
+
+      <div class="policy-callout">
+        <strong>Plain-language summary:</strong> RiskHelper.ai currently collects very little data. The Level 0
+        assessment runs in your browser and does not transmit your answers to our servers. We collect server access logs
+        automatically and use a privacy-friendly, cookie-less analytics tool (Umami) to understand total site visits. If
+        you contact us by email, we store that correspondence. We do not use advertising trackers and
+        we will not sell your data. Full details below.
+      </div>
+
+      <nav class="policy-toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#who-we-are">Who we are</a></li>
+          <li><a href="#what-we-collect">What data we collect and why</a></li>
+          <li><a href="#legal-bases">Legal bases (GDPR)</a></li>
+          <li><a href="#cookies" id="cookies">Cookies and tracking</a></li>
+          <li><a href="#third-parties">Third-party processors</a></li>
+          <li><a href="#international-transfers">International transfers</a></li>
+          <li><a href="#retention">How long we keep data</a></li>
+          <li><a href="#your-rights">Your rights</a></li>
+          <li><a href="#california">California privacy rights (CCPA)</a></li>
+          <li><a href="#uk">UK and Canadian residents</a></li>
+          <li><a href="#children">Children's data</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1 -->
+      <section class="policy-section" id="who-we-are">
+        <h2>1. Who we are</h2>
+        <p>RiskHelper.ai is a trading name of <strong>Risk Helper LLC</strong>, a company
+          registered in <strong>Delaware</strong>. We operate the website at <a
+            href="https://riskhelper.ai">riskhelper.ai</a> and the Level 0 Risk Assessment tool accessible from that
+          site.</p>
+        <p>For the purposes of the UK GDPR, EU GDPR, and applicable US state privacy laws, we are the data controller
+          for personal data processed in connection with your use of our website.</p>
+        <p><strong>Contact:</strong> For all privacy enquiries, write to <a
+            href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a>.</p>
+      </section>
+
+      <!-- 2 -->
+      <section class="policy-section" id="what-we-collect">
+        <h2>2. What data we collect and why</h2>
+
+        <h3>2.1 Data you give us directly</h3>
+        <p><strong>Email enquiries.</strong> When you contact us at contact@riskhelper.ai, we receive and store your
+          email address and the content of your message. We use this to respond to you. We do not add you to a marketing
+          list without your explicit consent.</p>
+
+        <h3>2.2 Data collected automatically</h3>
+        <p><strong>Server access logs.</strong> Our hosting provider (Hostinger) automatically records access logs when
+          you visit our website. These logs typically contain: your IP address, the date and time of the request, the
+          page or resource requested, the HTTP status code returned, your browser type and operating system, and the
+          referring URL. We use these logs for security monitoring, diagnosing technical problems, and understanding
+          aggregate traffic patterns. We do not use IP addresses to identify individual visitors.</p>
+        <p><strong>Your assessment answers.</strong> The Level 0 assessment runs entirely in your browser. Your answers
+          to the assessment questions are stored only in your browser's memory for the duration of your session. They
+          are not transmitted to our servers. When you close the browser tab, your answers are gone. We receive no
+          record of what you answered.</p>
+
+        <h3>2.3 Analytics</h3>
+        <p>We use Umami, a privacy-respecting analytics tool, to understand website traffic. Umami does not use cookies,
+          does not track you across other websites, and anonymizes your IP address. It only provides us with aggregate,
+          non-personal data about how our website is used.</p>
+
+        <h3>2.4 Data we do not collect</h3>
+        <ul>
+          <li>We do not collect payment information — there is no paid product at this time.</li>
+          <li>We do not create user accounts — no registration is required to use the Level 0 tool.</li>
+          <li>We do not use advertising networks or tracking pixels.</li>
+          <li>We do not sell data to any third party for any purpose.</li>
+        </ul>
+      </section>
+
+      <!-- 3 -->
+      <section class="policy-section" id="legal-bases">
+        <h2>3. Legal bases (GDPR and UK GDPR)</h2>
+        <p>For users in the European Economic Area or the United Kingdom, we process personal data under the following
+          legal bases:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Processing activity</th>
+              <th>Legal basis</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Responding to email enquiries</td>
+              <td>Legitimate interests (Article 6(1)(f))</td>
+              <td>Our interest in responding to communications is not overridden by your interests or rights</td>
+            </tr>
+            <tr>
+              <td>Server access logs (security and diagnostics)</td>
+              <td>Legitimate interests (Article 6(1)(f))</td>
+              <td>Processing is necessary to protect the security and integrity of our systems</td>
+            </tr>
+            <tr>
+              <td>Analytics (Umami)</td>
+              <td>Legitimate interests (Article 6(1)(f))</td>
+              <td>To understand aggregate website usage without identifying or tracking individual users</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 4 -->
+      <section class="policy-section" id="cookies">
+        <h2>4. Cookies and tracking</h2>
+        <p>We use cookies as follows:</p>
+        <h3>Essential cookies (no consent required)</h3>
+        <ul>
+          <li><strong>riskhelper_cookie_consent</strong> — stores your cookie consent choice. Expires after 12 months.
+            Without this, we cannot remember that you have seen the cookie banner.</li>
+        </ul>
+        <h3>Analytics</h3>
+        <p>We use a privacy-friendly analytics tool called Umami that does not use cookies to track visitors. Therefore,
+          no analytics cookies are set on your device by our analytics service.</p>
+        <h3>Third-party cookies</h3>
+        <p>We load fonts from Google Fonts. Google's servers log requests for fonts, which may include your IP address.
+          This is a connection to Google's servers, not a tracking cookie. See <a
+            href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a> for
+          details. We use the <code>font-display: swap</code> technique to minimise this connection where possible.</p>
+        <h3>Managing your cookie preferences</h3>
+        <p>You can change your consent choice at any time by clicking "Cookie settings" in our website footer. You can
+          also delete cookies directly in your browser settings — see your browser's help pages for instructions.</p>
+      </section>
+
+      <!-- 5 -->
+      <section class="policy-section" id="third-parties">
+        <h2>5. Third-party processors</h2>
+        <p>We use the following service providers who may process personal data on our behalf. We have signed or will
+          sign Data Processing Agreements (DPAs) with each:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Purpose</th>
+              <th>Location</th>
+              <th>Privacy information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hostinger International Ltd</td>
+              <td>Website hosting and server infrastructure</td>
+              <td>Lithuania (EEA)</td>
+              <td><a href="https://www.hostinger.com/privacy-policy" target="_blank" rel="noopener">Privacy policy</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Google (Google Fonts)</td>
+              <td>Font delivery</td>
+              <td>USA</td>
+              <td>SCCs in place. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy
+                  policy</a></td>
+            </tr>
+            <tr>
+              <td>Umami Data Inc.</td>
+              <td>Website analytics</td>
+              <td>Various (Umami Cloud)</td>
+              <td><a href="https://umami.is/privacy" target="_blank" rel="noopener">Privacy policy</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>We do not use any marketing platforms, CRM systems, or advertising networks at this time. We will update this
+          table if that changes.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="policy-section" id="international-transfers">
+        <h2>6. International data transfers</h2>
+        <p>Our primary hosting is in the EEA (Lithuania, via Hostinger). Some data may be processed in the United States
+          via Google Fonts. For any transfer to the USA or other countries not covered by an EU adequacy decision, we
+          rely on Standard Contractual Clauses (SCCs) as the appropriate safeguard.</p>
+      </section>
+
+      <!-- 7 -->
+      <section class="policy-section" id="retention">
+        <h2>7. How long we keep data</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Data type</th>
+              <th>Retention period</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email correspondence</td>
+              <td>3 years from last contact</td>
+              <td>To maintain a record of communications and respond to any follow-up queries</td>
+            </tr>
+            <tr>
+              <td>Server access logs</td>
+              <td>90 days</td>
+              <td>Security monitoring and incident investigation; older logs provide diminishing value</td>
+            </tr>
+            <tr>
+              <td>Cookie consent record</td>
+              <td>12 months</td>
+              <td>To demonstrate consent compliance and avoid showing the banner on every visit</td>
+            </tr>
+            <tr>
+              <td>Assessment answers</td>
+              <td>Browser session only</td>
+              <td>Not transmitted to our servers; cleared when you close the tab</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 8 -->
+      <section class="policy-section" id="your-rights">
+        <h2>8. Your rights</h2>
+        <p>Under the GDPR and UK GDPR, you have the following rights. We will respond to all requests within one
+          calendar month.</p>
+        <ul>
+          <li><strong>Right of access (Article 15).</strong> You can ask us what personal data we hold about you and
+            receive a copy.</li>
+          <li><strong>Right to rectification (Article 16).</strong> You can ask us to correct inaccurate data we hold
+            about you.</li>
+          <li><strong>Right to erasure (Article 17).</strong> You can ask us to delete personal data we hold about you
+            where there is no compelling reason to continue processing it.</li>
+          <li><strong>Right to restriction (Article 18).</strong> You can ask us to restrict processing of your data in
+            certain circumstances.</li>
+          <li><strong>Right to data portability (Article 20).</strong> Where processing is based on consent or a
+            contract, you can ask us to provide your data in a machine-readable format.</li>
+          <li><strong>Right to object (Article 21).</strong> You can object to processing based on legitimate interests.
+            We will stop processing unless we can demonstrate compelling legitimate grounds.</li>
+          <li><strong>Rights related to automated decision-making.</strong> We do not make automated decisions about
+            individuals that produce legal or similarly significant effects.</li>
+        </ul>
+        <p>To exercise any of these rights, email us at <a
+            href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a>. We may need to verify your identity before
+          acting on a request. We will not charge a fee for reasonable requests.</p>
+        <p>If you are not satisfied with our response, you have the right to lodge a complaint with your national data
+          protection authority. In the UK, this is the <a href="https://ico.org.uk" target="_blank"
+            rel="noopener">Information Commissioner's Office (ICO)</a>. In the EEA, contact the supervisory authority in
+          your country of residence.</p>
+      </section>
+
+      <!-- 9 -->
+      <section class="policy-section" id="california">
+        <h2>9. California privacy rights (CCPA / CPRA)</h2>
+        <p>If you are a California resident, the California Consumer Privacy Act (CCPA) as amended by the California
+          Privacy Rights Act (CPRA) gives you additional rights over your personal information.</p>
+        <h3>Your California rights</h3>
+        <ul>
+          <li><strong>Right to know.</strong> You can request details about the personal information we have collected
+            about you and how we have used and disclosed it.</li>
+          <li><strong>Right to delete.</strong> You can request that we delete personal information we have collected
+            from you, subject to certain exceptions.</li>
+          <li><strong>Right to correct.</strong> You can request that we correct inaccurate personal information we hold
+            about you.</li>
+          <li><strong>Right to opt out of sale or sharing.</strong> We do not sell personal information. We do not share
+            personal information for cross-context behavioural advertising. No opt-out is required, but you may submit a
+            request to confirm this at any time.</li>
+          <li><strong>Right to non-discrimination.</strong> We will not discriminate against you for exercising your
+            privacy rights.</li>
+        </ul>
+        <h3>Do Not Sell or Share My Personal Information</h3>
+        <p>As stated above, we do not sell or share personal information for advertising purposes. To confirm this or to
+          submit a data request, email <a href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a> with the subject
+          line "California Privacy Request".</p>
+      </section>
+
+      <!-- 10 -->
+      <section class="policy-section" id="uk">
+        <h2>10. UK and Canadian residents</h2>
+        <h3>United Kingdom</h3>
+        <p>Processing of UK residents' personal data is governed by UK GDPR and the Data Protection Act 2018. Our legal
+          bases and your rights are as described in Sections 3 and 8 above. To complain to the UK regulator, contact the
+          <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ICO</a>.
+        </p>
+        <h3>Canada (PIPEDA)</h3>
+        <p>Canadian residents' data is processed in accordance with the Personal Information Protection and Electronic
+          Documents Act (PIPEDA). We collect, use, and disclose personal information only with your knowledge and
+          consent, or as required by law. You may request access to or correction of your personal information by
+          writing to <a href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a>. To complain to the Canadian
+          regulator, contact the <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">Office of the Privacy
+            Commissioner of Canada</a>.</p>
+      </section>
+
+      <!-- 11 -->
+      <section class="policy-section" id="children">
+        <h2>11. Children's data</h2>
+        <p>The RiskHelper.ai website and Level 0 assessment are directed at adults — specifically, professional Product
+          Managers and compliance professionals. We do not knowingly collect personal data from children under the age
+          of 13 (or 16 for EU/UK residents). If you believe we have inadvertently collected data from a child, please
+          contact us immediately at <a href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a> and we will delete
+          it promptly.</p>
+      </section>
+
+      <!-- 12 -->
+      <section class="policy-section" id="security">
+        <h2>12. Security</h2>
+        <p>We take reasonable technical and organisational measures to protect personal data against accidental or
+          unlawful loss, alteration, disclosure, or access. These measures include:</p>
+        <ul>
+          <li>HTTPS encryption for all data in transit</li>
+          <li>HTTP security headers (Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+          </li>
+          <li>No transmission of assessment answers to our servers — they remain in your browser only</li>
+          <li>Access controls on hosting infrastructure</li>
+          <li>Regular review of third-party processors' security practices</li>
+        </ul>
+        <p>No method of transmission over the internet is completely secure. We cannot guarantee the absolute security
+          of information you send to us by email.</p>
+      </section>
+
+      <!-- 13 -->
+      <section class="policy-section" id="changes">
+        <h2>13. Changes to this policy</h2>
+        <p>We will update this policy when our data practices change materially — for example, when we add user
+          accounts, implement analytics, or engage new processors. We will post the updated policy on this page and
+          update the "Last updated" date at the top. For significant changes, we may notify you directly if we hold
+          contact details for you.</p>
+      </section>
+
+      <!-- 14 -->
+      <section class="policy-section" id="contact">
+        <h2>14. Contact us</h2>
+        <p>For any questions about this privacy policy or to exercise your rights, please contact:</p>
+        <p>
+          <strong>RiskHelper.ai</strong><br>
+          Email: <a href="mailto:contact@riskhelper.ai">contact@riskhelper.ai</a><br>
+          [Registered address — add before launch]
+        </p>
+        <p>We will acknowledge your request within 72 hours and provide a substantive response within one calendar
+          month.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-lockup" aria-label="RiskHelper.ai home">
+          <img class="logo-img"
+            src="data:image/png;base64,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"
+            alt="RiskHelper.ai logo" />
+          <span class="logo-wordmark">Risk<span>Helper</span>.ai</span>
+        </a>
+        <p>Early-stage risk assessment for product teams. Built by ex-Meta privacy leads.</p>
+      </div>
+      <div class="footer-links-group">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of use</a></li>
+          <li><a href="#" id="open-cookie-settings">Cookie settings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 RiskHelper.ai — Directional guidance only, not legal advice.</span>
+      <a href="contact.html">Contact us</a>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookie-banner" class="hidden" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <p>We use essential cookies to make this site work. With your consent, we may also use analytics cookies. <a
+        href="privacy-policy.html#cookies">Learn more</a>.</p>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Accept all</button>
+      <button class="cookie-btn cookie-btn--reject" id="cookie-reject">Essential only</button>
+      <button class="cookie-btn cookie-btn--manage" id="cookie-manage">Manage preferences</button>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script>
+    document.getElementById('open-cookie-settings').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.RH.resetConsent();
+    });
+  </script>
+
+</body>
+
+</html>

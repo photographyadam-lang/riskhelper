@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Security headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; img-src 'self' data:; connect-src 'self' https://cloud.umami.is;" />
+
+  <title>Level 0 Risk Assessment | RiskHelper.ai</title>
+  <meta name="description"
+    content="Free 5-minute risk screener for Product Managers. Find out which privacy, AI, online safety, and children's risk areas apply to your feature." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Fonts (matches homepage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Shared design system -->
+  <link rel="stylesheet" href="shared.css" />
+
+  <!-- Assessment-specific styles -->
+  <link rel="stylesheet" href="assessment.css" />
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="539d8b41-ef4f-4463-9d4b-42e563768538"></script>
+
+
+</head>
+
+<body class="assessment-page">
+
+  <!-- NAV (matches homepage) -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="logo-lockup" aria-label="RiskHelper.ai home">
+        <img class="logo-img"
+          src="data:image/png;base64,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"
+          alt="RiskHelper.ai logo" />
+        <span class="logo-wordmark">Risk<span>Helper</span>.ai</span>
+      </a>
+      <span class="nav-page-label">Level 0 Screener</span>
+      <div class="nav-actions">
+        <a href="contact.html" style="font-size:14px;font-weight:600;color:var(--navy);margin-right:16px;">Contact
+          us</a>
+        <a href="index.html" class="btn btn--outline" style="padding:8px 16px;font-size:13px;">← Back to site</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="app" role="main">
+
+    <!-- INTRO SCREEN -->
+    <section id="screen-intro" class="screen active" aria-label="Assessment introduction">
+      <div class="intro-content">
+        <div class="intro-eyebrow">Free assessment · No account needed · Under 5 minutes</div>
+        <h1 id="intro-title"></h1>
+        <p id="intro-description" class="intro-desc"></p>
+        <div class="intro-stats" aria-label="Assessment overview">
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">risk domains</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><span class="stat-num">~5</span><span class="stat-label">minutes</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><span class="stat-num">11</span><span class="stat-label">questions max</span></div>
+        </div>
+        <div class="intro-domains" aria-label="Risk domains covered">
+          <div class="intro-domain">
+            <span class="domain-dot privacy-dot" aria-hidden="true"></span>
+            <span>Privacy &amp; data protection</span>
+          </div>
+          <div class="intro-domain">
+            <span class="domain-dot ai-dot" aria-hidden="true"></span>
+            <span>AI &amp; algorithmic risk</span>
+          </div>
+          <div class="intro-domain">
+            <span class="domain-dot safety-dot" aria-hidden="true"></span>
+            <span>Online safety</span>
+          </div>
+          <div class="intro-domain">
+            <span class="domain-dot children-dot" aria-hidden="true"></span>
+            <span>Children's safety</span>
+          </div>
+        </div>
+        <button id="btn-start" class="btn btn--primary btn--lg">Start assessment →</button>
+        <p class="intro-disclaimer">Directional guidance only — not legal advice. Always engage qualified legal or
+          compliance professionals before launch.</p>
+      </div>
+    </section>
+
+    <!-- QUESTIONS SCREEN -->
+    <section id="screen-questions" class="screen" aria-label="Assessment questions">
+
+
+
+      <!-- Tab: Screener -->
+      <div class="tab-panel active" id="panel-screener" role="tabpanel" aria-labelledby="tab-screener">
+        <div class="questions-layout">
+
+          <aside class="sidebar" aria-label="Progress and risk domains">
+            <div class="progress-wrap">
+              <div class="progress-label">Progress</div>
+              <div class="progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                id="progress-bar-track">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+              </div>
+              <div id="progress-text" class="progress-text">0 of 0 answered</div>
+            </div>
+
+            <div class="live-domains" aria-live="polite" aria-label="Current risk domain status">
+              <div class="live-domains-label">Risk domains</div>
+              <div id="live-domain-list"></div>
+              <div class="live-domains-note">Updates as you answer</div>
+            </div>
+
+            <div class="sidebar-note">Greyed questions don't apply based on your answers so far.</div>
+          </aside>
+
+          <div class="questions-main">
+            <div id="questions-container"></div>
+            <div class="submit-row">
+              <button id="btn-submit" class="btn btn--primary btn--lg" disabled aria-disabled="true">See my results
+                →</button>
+              <span class="submit-hint" id="submit-hint" role="status">Answer all active questions to continue</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </section>
+
+    <!-- RESULTS SCREEN -->
+    <section id="screen-results" class="screen" aria-label="Assessment results">
+      <div class="results-layout">
+        <div class="results-header">
+          <div class="results-header-inner">
+            <span class="overline" style="color:#93C5FD;">Your results</span>
+            <h2 id="results-headline" style="color:#fff;"></h2>
+            <p id="results-summary"
+              style="color:rgba(255,255,255,0.65);margin-top:10px;font-size:15px;max-width:580px;"></p>
+            <div id="results-summary-table-container"></div>
+          </div>
+        </div>
+        <div class="results-body">
+          <div id="results-domains" class="results-domains" role="list" aria-label="Risk domain results"></div>
+          <div class="results-footer">
+            <div class="results-disclaimer">
+              <strong>Important:</strong> This result is directional guidance only. It is not legal advice and is not a
+              substitute for review by qualified legal or compliance professionals. Always have your designs reviewed
+              before launch.
+            </div>
+            <div class="results-actions">
+              <button id="btn-edit" class="btn btn--outline" onclick="editAnswers()">Edit answers</button>
+              <button id="btn-restart" class="btn btn--primary" onclick="restart()">Start new assessment →</button>
+            </div>
+            <div class="results-next">
+              <p style="font-size:13px;color:var(--text-soft);">Want deeper guidance? <a
+                  href="mailto:contact@riskhelper.ai" style="color:var(--blue);">Contact us about Level 3 professional
+                  review →</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (simplified for tool page) -->
+  <footer style="padding:24px 40px;">
+    <div class="footer-bottom" style="max-width:1080px;margin:0 auto;">
+      <span>© 2025 RiskHelper.ai — <a href="privacy-policy.html" style="color:rgba(255,255,255,0.4);">Privacy policy</a>
+        · <a href="terms.html" style="color:rgba(255,255,255,0.4);">Terms of use</a></span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.25);">Directional guidance only — not legal advice</span>
+    </div>
+  </footer>
+
+  <!-- EMBEDDED CONFIG -->
+  <script>
+    window.RISKHELPER_CONFIG = {
+      "meta": {
+        "title": "Risk Helper",
+        "subtitle": "Level 0 Risk Assessment",
+        "description": "Answer 9\u201311 questions to identify which risk domains apply to your product. Takes about 3 minutes. Anonymous.",
+        "version": "6",
+        "outOfScope": [
+          "Information Security (SOC 2, ISO 27001, encryption, access controls)",
+          "Email and SMS Marketing Compliance (CAN-SPAM, TCPA, CASL)",
+          "Financial Consumer Protection Law (PCI-DSS, FCRA, UDAAP)",
+          "Digital Accessibility (WCAG, ADA Title III)",
+          "EU Digital Markets Act (applies to designated gatekeepers only)"
+        ]
+      },
+      "domains": {
+        "privacy": { "label": "Privacy and Data Protection", "shortLabel": "Privacy", "description": "What you collect, how you use it, who you share it with" },
+        "ai": { "label": "AI and Algorithmic Risk", "shortLabel": "AI & Algorithms", "description": "What AI does, who it affects, what happens when it's wrong" },
+        "safety": { "label": "Online Safety and Harm Prevention", "shortLabel": "Online Safety", "description": "Whether the platform can harm users through content, contact, or algorithmic amplification" },
+        "children": { "label": "Children and Minors", "shortLabel": "Children", "description": "Age-appropriate design, parental consent, and contact risks for under-18s" }
+      },
+      "priorities": {
+        "elevated": { "label": "Elevated", "note": "Legal review recommended before launch" },
+        "standard": { "label": "Flagged", "note": "Assessment recommended at design phase" },
+        "lower": { "label": "Lower", "note": "Awareness flagged \u2014 review at Level 1" }
+      },
+      "blocks": [
+        { "id": "1", "label": "Your product and your users" },
+        { "id": "2", "label": "Data" },
+        { "id": "3", "label": "AI and algorithms" },
+        { "id": "4", "label": "Interaction and content" }
+      ],
+      "questions": [
+        {
+          "id": "q1a", "block": "1",
+          "text": "Who are your customers \u2014 the people or organisations that use or pay for your product?",
+          "type": "multi", "showIf": null,
+          "options": [
+            { "value": "consumers", "label": "Consumers \u2014 members of the public" },
+            { "value": "employees", "label": "Employees or internal teams" },
+            { "value": "businesses", "label": "Other businesses (your customers are companies, not individuals)" },
+            { "value": "notsure", "label": "I'm not sure yet" }
+          ],
+          "feedback": {
+            "consumers": "Consumer-facing products are in scope for all four risk domains. Privacy, AI, Online Safety, and Children flags can all apply.",
+            "employees": "Employee-facing tools are in scope for Privacy (employment data has elevated obligations in many jurisdictions) and AI if you use automated scoring or decision systems.",
+            "businesses": "B2B products have fewer consumer protection obligations, but Privacy still applies \u2014 especially if your product processes data about your customers' own users. Check Q1b carefully.",
+            "notsure": "Treated as consumer-facing for routing purposes. All domains remain open until you have more clarity."
+          }
+        },
+        {
+          "id": "q1b", "block": "1",
+          "text": "Does your product collect data about, or make decisions that affect, people who are NOT your direct customers or users?",
+          "hint": "For example: job applicants, children of your users, patients of your healthcare customers, people whose content you process.",
+          "type": "single", "showIf": null,
+          "options": [
+            { "value": "yes", "label": "Yes" },
+            { "value": "no", "label": "No \u2014 we only handle data about our own direct users" },
+            { "value": "notsure", "label": "Not sure" }
+          ],
+          "feedback": {
+            "yes": "This is the most commonly missed risk signal. When your product affects people who didn't sign up for it \u2014 job applicants, patients, children of users \u2014 you have obligations to those people even though they're not your customers. Flags Privacy at elevated priority.",
+            "no": "Straightforward data subject relationship. Privacy obligations apply to your direct users only.",
+            "notsure": "Treated conservatively as Yes. If there's any chance your product affects people outside your direct user base, assume it does until you can confirm otherwise."
+          }
+        },
+        {
+          "id": "q2", "block": "1",
+          "text": "Do people interact with your product directly?",
+          "type": "single", "showIf": null,
+          "options": [
+            { "value": "yes", "label": "Yes \u2014 it has an app, website, or interface that people use" },
+            { "value": "no", "label": "No \u2014 it runs in the background or is accessed only by other systems" }
+          ],
+          "feedback": {
+            "yes": "Direct user interaction keeps Online Safety and Children in scope. UGC, messaging, and age-appropriate design obligations only apply if users can actually interact with the product.",
+            "no": "Background or API-only products clear the UGC route for Online Safety. The AI algorithmic harm route can still apply if the product shapes consumer-facing outputs downstream."
+          }
+        },
+        {
+          "id": "q3", "block": "2",
+          "text": "Does your product collect or use information about people?",
+          "type": "multi", "showIf": null,
+          "options": [
+            { "value": "direct", "label": "Yes \u2014 people give us information directly (accounts, forms, profiles)" },
+            { "value": "observed", "label": "Yes \u2014 we observe or track how people use it (behaviour, clicks, location)" },
+            { "value": "received", "label": "Yes \u2014 we receive information about people from another system or source" },
+            { "value": "no", "label": "No \u2014 it doesn't handle information about identifiable individuals", "exclusive": true }
+          ],
+          "feedback": {
+            "direct": "Direct collection (accounts, forms, profiles) is the clearest privacy trigger. You're the data controller and all core GDPR/CCPA obligations apply.",
+            "observed": "Behavioural tracking \u2014 even basic analytics like page views and session duration \u2014 constitutes personal data processing in most jurisdictions. Cookie consent, privacy notices, and retention policies all apply.",
+            "received": "Receiving data from another system raises controller vs. processor questions. If you're processing data on behalf of your customer, you may need Data Processing Agreements.",
+            "no": "No personal data processing. Privacy domain will not be flagged unless Q1b indicates affected third parties."
+          }
+        },
+        {
+          "id": "q4", "block": "2",
+          "text": "Does your product handle any of the following?",
+          "type": "multi",
+          "showIf": { "question": "q3", "hasAnyOf": ["direct", "observed", "received"] },
+          "options": [
+            { "value": "health", "label": "Health, medical, or wellness data" },
+            { "value": "financial", "label": "Financial account or payment data" },
+            { "value": "location", "label": "Precise location data" },
+            { "value": "biometric", "label": "Biometric data (face recognition, fingerprints, voice identification)" },
+            { "value": "orientation", "label": "Sexual orientation, gender identity, or relationship data" },
+            { "value": "sensitive", "label": "Political views, religious beliefs, trade union membership, or criminal records" },
+            { "value": "under16", "label": "Data about people under 16" },
+            { "value": "none", "label": "None of the above", "exclusive": true }
+          ],
+          "feedback": {
+            "health": "GDPR Article 9 special category. Requires explicit consent, often a DPIA, and heightened security measures. Elevates Privacy to high priority.",
+            "financial": "Financial account data is sensitive under most privacy laws. PCI-DSS applies if you handle payment card data. Elevates Privacy to high priority.",
+            "location": "Precise GPS-level location is sensitive under GDPR and many US state laws. Raises consent and purpose limitation questions. Elevates Privacy.",
+            "biometric": "Among the most tightly regulated categories. Illinois BIPA, Texas, Washington have specific biometric laws with private rights of action. GDPR Article 9 applies. Elevates Privacy.",
+            "orientation": "Sexual orientation and gender identity are GDPR Article 9 special categories requiring explicit consent or a specific legal basis. Elevates Privacy.",
+            "sensitive": "Political opinions, religious beliefs, trade union membership, and criminal convictions are GDPR Article 9/10 categories \u2014 same elevated obligations as health data. Common in HR tools, background checks, civic tech. Elevates Privacy.",
+            "under16": "Triggers the Children domain. Data about under-16s is subject to COPPA, GDPR Article 8, and UK Children's Code regardless of whether children are your intended users.",
+            "none": "No sensitive categories. Privacy flagged at standard priority based on Q3 selections."
+          }
+        },
+        {
+          "id": "q5", "block": "3",
+          "text": "Does your product use AI, machine learning, or automated algorithms to do anything?",
+          "type": "single", "showIf": null,
+          "options": [
+            { "value": "yes", "label": "Yes" },
+            { "value": "no", "label": "No" },
+            { "value": "notsure", "label": "I'm not sure \u2014 it might use a third-party AI tool or automated system" }
+          ],
+          "feedback": {
+            "yes": "AI use confirmed. Q6 determines what type of AI risk applies. The key distinction: does the AI make decisions about people (highest risk), shape what people see (medium), or run entirely behind the scenes (lower risk)?",
+            "no": "No AI risk domain flagged. Note: rule-based algorithms and deterministic scoring systems also count as automated processing under GDPR Article 22.",
+            "notsure": "Treated conservatively. Third-party AI tools (OpenAI, Google, etc.) count as AI use for compliance purposes \u2014 you can't delegate your obligations to the vendor."
+          }
+        },
+        {
+          "id": "q6", "block": "3",
+          "text": "What does the AI or algorithm do in your product? Select all that apply.",
+          "type": "multi",
+          "showIf": { "question": "q5", "equals": "yes" },
+          "options": [
+            { "value": "generates", "label": "Creates content that users see, read, or act on \u2014 text, images, audio, summaries, or suggestions" },
+            { "value": "decides", "label": "Determines an outcome for a specific person or group \u2014 approvals, rejections, pricing, account status, or differential treatment based on predicted characteristics. Applies whether automatic or reviewed by a human." },
+            { "value": "shapes", "label": "Shapes what individual users see or experience \u2014 the order, selection, or presentation of content personalised to them" },
+            { "value": "analyses", "label": "Processes or evaluates content or data \u2014 detects, categorises, or filters posts, documents, signals, or behaviour. Does not include systems where classification directly determines what a person can access." },
+            { "value": "internal", "label": "Runs behind the scenes \u2014 its effect is on internal operations or systems; users don't see or feel it directly" }
+          ],
+          "feedback": {
+            "generates": "AI content generation triggers transparency obligations. Users often have a right to know when content is AI-generated, especially under the EU AI Act.",
+            "decides": "Highest-risk AI category. Automated decisions about people trigger GDPR Article 22 (right to human review), EU AI Act high-risk classification, and emerging US state AI laws. Elevates AI to high priority.",
+            "shapes": "Personalisation algorithms are in scope for DSA Article 29 transparency in the EU. Consumer-facing personalisation also triggers the Online Safety algorithmic harm route even without UGC.",
+            "analyses": "Content and data analysis (moderation, fraud detection, sentiment) carries lower AI urgency \u2014 unless the output directly determines what a person can access, in which case it should be in 'decides'.",
+            "internal": "Internal optimisation only. No AI domain flag if this is the only selection."
+          }
+        },
+        {
+          "id": "q7", "block": "4",
+          "text": "Can people on your product interact with each other or create content?",
+          "type": "multi", "showIf": null,
+          "options": [
+            { "value": "public", "label": "Yes \u2014 users can post, comment, or share content publicly or in groups" },
+            { "value": "messaging", "label": "Yes \u2014 users can send direct messages to each other" },
+            { "value": "reviews", "label": "Yes \u2014 users can review, rate, or respond to other users' content or profiles" },
+            { "value": "no", "label": "No \u2014 users only interact with content we produce and control", "exclusive": true }
+          ],
+          "feedback": {
+            "public": "Public posting is the strongest Online Safety trigger. DSA and UK Online Safety Act impose content moderation, illegal content reporting, and systemic risk assessment obligations. Elevates Online Safety to high priority.",
+            "messaging": "Direct messaging creates contact risk \u2014 particularly where children may be present. Illegal content shared via DMs is in scope for UK OSA and DSA. Intersects with the Children domain if Q8 flags minors.",
+            "reviews": "User reviews are UGC in most legal frameworks. Content moderation obligations apply. Defamation risk is higher on review platforms (outside this screener's scope).",
+            "no": "No user-generated content. Online Safety only flags if AI personalisation is consumer-facing (algorithmic harm route via Q6 + Q1a)."
+          }
+        },
+        {
+          "id": "q8a", "block": "4",
+          "text": "You mentioned your product handles data about people under 16. Is this because:",
+          "type": "single",
+          "showIf": { "question": "q4", "includes": "under16" },
+          "options": [
+            { "value": "designed", "label": "The product is designed for or marketed to children or teenagers" },
+            { "value": "incidental", "label": "Children's data is incidentally included \u2014 for example, we process family accounts, or clients send us data that may include minors" },
+            { "value": "notsure", "label": "Not sure" }
+          ],
+          "feedback": {
+            "designed": "Products designed for children face the full weight of COPPA, UK Children's Code, and GDPR Article 8. Verifiable parental consent, high privacy by default, no profiling for advertising, and age-appropriate content obligations all apply. Elevates Children to critical priority.",
+            "incidental": "Incidental inclusion still creates obligations \u2014 you can't opt out of COPPA because children weren't your intended audience. Data minimisation, retention limits, and parental consent requirements apply to children's data regardless of how it arrived.",
+            "notsure": "Treated conservatively. Children's domain flagged at elevated priority. Confirm whether any data subjects are under 16 before launch."
+          }
+        },
+        {
+          "id": "q8b", "block": "4",
+          "text": "Could someone under 18 realistically use your product or be affected by its decisions?",
+          "type": "single",
+          "showIf": { "question": "q4", "notIncludes": "under16" },
+          "options": [
+            { "value": "yes", "label": "Yes \u2014 it's designed for or marketed to children or teenagers" },
+            { "value": "possibly", "label": "Possibly \u2014 minors are a realistic part of our user base, even if not the primary audience" },
+            { "value": "no", "label": "No \u2014 access is restricted to adults, or minors are not a realistic user of this product" },
+            { "value": "notsure", "label": "Not sure" }
+          ],
+          "feedback": {
+            "yes": "Full Children domain obligations apply. COPPA, UK Children's Code, GDPR Article 8, and age-appropriate design requirements all in scope. Elevates Children to critical priority.",
+            "possibly": "The UK Children's Code applies if children are a 'significant proportion' of your users \u2014 not just the primary audience. If teenagers use your platform, age-appropriate design defaults apply. Children domain flagged at standard priority.",
+            "no": "Children domain cleared. If you have age verification in place, note that its robustness will affect whether regulators accept this position.",
+            "notsure": "Treated conservatively. Children domain flagged at elevated priority. Confirm your user age distribution before launch."
+          }
+        },
+        {
+          "id": "q9", "block": "4",
+          "text": "Where will your users or affected individuals be?",
+          "type": "multi", "showIf": null,
+          "options": [
+            { "value": "us", "label": "Primarily United States" },
+            { "value": "uk", "label": "United Kingdom" },
+            { "value": "eu", "label": "European Union" },
+            { "value": "global", "label": "Global or multiple regions" },
+            { "value": "notsure", "label": "I'm not sure" }
+          ],
+          "feedback": {
+            "us": "US privacy law is a patchwork of state laws \u2014 CCPA/CPRA (California), Virginia, Colorado, Connecticut, Texas, and others. COPPA applies federally for children. State AI laws emerging in Colorado, Illinois, and others.",
+            "uk": "UK GDPR and Data (Use & Access) Act 2025 apply. UK Online Safety Act 2023 applies to user-to-user platforms. UK Children's Code applies broadly. ICO is the regulator.",
+            "eu": "GDPR applies. EU AI Act is now in force (phased through 2027). DSA applies to intermediary services. Strongest regulatory obligations across all four domains.",
+            "global": "Treated as EU + UK + US combined \u2014 most stringent standards across all flagged domains.",
+            "notsure": "Treated as global \u2014 most stringent standards applied. Better to over-assess than under-assess when jurisdiction is uncertain."
+          }
+        }
+      ],
+      "routing": {
+        "privacy": {
+          "flag": [
+            { "anyOf": { "q3": ["direct", "observed", "received"] } },
+            { "anyOf": { "q1b": ["yes", "notsure"] } }
+          ],
+          "elevate": [
+            { "anyOf": { "q4": ["health", "financial", "location", "biometric", "orientation", "sensitive"] } },
+            { "anyOf": { "q1b": ["yes"] } }
+          ]
+        },
+        "ai": {
+          "flag": [
+            { "all": { "q5": ["yes"], "q6_any": ["generates", "decides", "shapes", "analyses"] } }
+          ],
+          "elevate": [{ "anyOf": { "q6": ["decides"] } }],
+          "lower": [{ "only": { "q6": ["analyses"] } }]
+        },
+        "safety": {
+          "flag": [{ "anyOf": { "q7": ["public", "messaging", "reviews"] } }],
+          "elevate": [{ "anyOf": { "q7": ["public"] } }]
+        },
+        "children": {
+          "flag": [
+            { "anyOf": { "q4": ["under16"] } },
+            { "anyOf": { "q8a": ["designed", "incidental", "notsure"] } },
+            { "anyOf": { "q8b": ["yes", "possibly", "notsure"] } }
+          ],
+          "elevate": [
+            { "anyOf": { "q8a": ["designed"] } },
+            { "anyOf": { "q8b": ["yes"] } }
+          ]
+        }
+      }
+    };
+  </script>
+
+  <footer>
+    <div class="footer-bottom">
+      <span>© 2025 RiskHelper.ai — Directional guidance only, not legal advice.</span>
+      <a href="contact.html">Contact us</a>
+    </div>
+  </footer>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookie-banner" class="hidden" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <p>We use essential cookies to make this site work. With your consent, we may also use analytics cookies. <a
+        href="privacy-policy.html#cookies">Learn more</a>.</p>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Accept all</button>
+      <button class="cookie-btn cookie-btn--reject" id="cookie-reject">Essential only</button>
+      <button class="cookie-btn cookie-btn--manage" id="cookie-manage">Manage preferences</button>
+    </div>
+  </div>
+
+  <!-- ASSESSMENT LOGIC -->
+  <script src="assessment.js"></script>
+
+  <!-- SHARED JS (nav, cookie consent) -->
+  <script src="shared.js"></script>
+
+  <!-- HELP TRIGGER LOGIC -->
+  <script>
+    async function initHelp() {
+      let helpData;
+
+      try {
+        const response = await fetch('assessment-help.json');
+        helpData = await response.json();
+      } catch (err) {
+        console.warn('Help content could not be loaded. Please ensure you are running a local server (e.g. VS Code Live Server) and not opening the file directly via file:// protocol, as browsers block local fetch requests.', err);
+        return;
+      }
+
+      document.querySelectorAll('.help-trigger').forEach(btn => {
+        const questionId = btn.getAttribute('aria-controls').replace('help-', '');
+
+        // Validate — warn if a trigger has no matching JSON entry
+        if (!helpData[questionId]) {
+          console.warn(`No help content found for question ID: "${questionId}". Check assessment-help.json.`);
+          return;
+        }
+
+        const data = helpData[questionId];
+
+        // Build the panel
+        const panel = document.createElement('div');
+        panel.id = `help-${questionId}`;
+        panel.className = 'help-panel';
+        panel.hidden = true;
+
+        const why = document.createElement('p');
+        why.className = 'help-why';
+        why.innerHTML = `<strong>Why we're asking</strong><br>${data.why}`;
+        panel.appendChild(why);
+
+        if (data.answers && data.answers.length > 0) {
+          const answersWrapper = document.createElement('div');
+          answersWrapper.className = 'help-answers';
+
+          const heading = document.createElement('p');
+          heading.innerHTML = '<strong>What each answer means</strong>';
+          answersWrapper.appendChild(heading);
+
+          data.answers.forEach(answer => {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>${answer.label}:</strong> ${answer.text}`;
+            answersWrapper.appendChild(p);
+          });
+
+          panel.appendChild(answersWrapper);
+        }
+
+        // Insert panel immediately after the trigger button
+        btn.insertAdjacentElement('afterend', panel);
+
+        // Wire up toggle
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          panel.hidden = expanded;
+        });
+      });
+    }
+
+    initHelp();
+  </script>
+
+</body>
+
+</html>

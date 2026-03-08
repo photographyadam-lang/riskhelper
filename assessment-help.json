@@ -1,0 +1,247 @@
+{
+  "q1a": {
+    "why": "Your audience determines which risk areas are even in play. Consumer products — apps, platforms, anything a member of the public signs up for — attract the widest set of obligations. Things like online safety rules and children's protections only apply when real people use your product, not in B2B or internal tools. Getting this right up front stops us asking you irrelevant questions.",
+    "answers": [
+      {
+        "label": "Consumers — members of the public",
+        "text": "All four risk areas stay open. A fitness tracker, a food delivery app, a social platform — anything the public uses — can touch privacy, AI, online safety, and children's considerations."
+      },
+      {
+        "label": "Employees or internal teams",
+        "text": "Think HR tools, internal dashboards, employee feedback platforms. Privacy still applies — especially if the product monitors activity or feeds into performance decisions. Online safety is unlikely to be relevant."
+      },
+      {
+        "label": "Other businesses (your customers are companies, not individuals)",
+        "text": "B2B products like data APIs or white-label SaaS have fewer consumer-facing obligations. But if your product processes data about your customers' users — not just your customers themselves — that changes things. Q1b asks about this directly."
+      },
+      {
+        "label": "I'm not sure yet",
+        "text": "Treated the same as consumers — all areas stay open. Nail this down before you launch; your audience is the single biggest factor in what applies to you."
+      }
+    ]
+  },
+
+  "q1b": {
+    "why": "This is the question product teams most often get wrong. Lots of products touch people who never signed up — job applicants processed by an HR tool, patients whose records flow through a healthcare platform, children of users in a family app. Those people have rights even though they're not your customer. If your product affects them, it affects your obligations.",
+    "answers": [
+      {
+        "label": "Yes",
+        "text": "Flag. Think about everyone your product touches, not just the people who log in. Job applicants, patients, family members, people whose content you analyse — they all count. This is often the difference between a simple review and a more intensive one."
+      },
+      {
+        "label": "No — we only handle data about our own direct users",
+        "text": "Straightforward. Your obligations cover your users and no one else. Worth revisiting as your product grows — third-party data has a way of appearing without a deliberate decision."
+      },
+      {
+        "label": "Not sure",
+        "text": "Treated as Yes. If there's any chance your product affects people outside your direct user base, assume it does. This is worth thinking through before launch."
+      }
+    ]
+  },
+
+  "q2": {
+    "why": "This separates products with a user interface from backend systems — APIs, data pipelines, processing engines. Online safety rules only apply when users can actually do things on your product. An API that powers another company's consumer app isn't subject to the same rules as the consumer app itself — though it may have indirect obligations.",
+    "answers": [
+      {
+        "label": "Yes — it has an app, website, or interface that people use",
+        "text": "Users can interact with it, which keeps online safety and children's considerations on the table. The nature of that interaction matters — Q7 asks specifically about whether users can interact with each other."
+      },
+      {
+        "label": "No — it runs in the background or is accessed only by other systems",
+        "text": "Think data APIs, processing infrastructure, internal analytics engines. Content moderation obligations drop away. But if your product powers what consumers ultimately see — like recommendations or personalised content — AI risk considerations may still apply."
+      }
+    ]
+  },
+
+  "q3": {
+    "why": "This is the core privacy question. It covers the three main ways products handle personal data: people give it to you directly, you observe their behaviour, or you receive it from somewhere else. Many teams underestimate this — even basic product analytics (what pages people visit, how long sessions last) counts as personal data in most jurisdictions. Select everything that applies; most products tick more than one.",
+    "answers": [
+      {
+        "label": "Yes — people give us information directly (accounts, forms, profiles)",
+        "text": "The clearest privacy signal. You're directly collecting personal data, which means you need a lawful reason to do so, a privacy notice, a policy for how long you keep it, and a way for people to access or delete it."
+      },
+      {
+        "label": "Yes — we observe or track how people use it (behaviour, clicks, location)",
+        "text": "This includes standard product analytics — page views, click events, session duration. It surprises many PMs, but tracking behaviour counts as personal data processing in most jurisdictions. Cookie consent rules apply."
+      },
+      {
+        "label": "Yes — we receive information about people from another system or source",
+        "text": "Think B2B platforms where your customer sends you their users' data to process. This raises questions about whether you're acting as a data processor (following your customer's instructions) or a data controller (making your own decisions about the data). You may need a formal data processing agreement in place."
+      },
+      {
+        "label": "No — it doesn't handle information about identifiable individuals",
+        "text": "Privacy won't be flagged unless Q1b indicated you affect third parties. Be confident here — 'identifiable' includes device IDs, IP addresses, and behavioural fingerprints, not just names and email addresses."
+      }
+    ]
+  },
+
+  "q4": {
+    "why": "Some types of data carry significantly heavier obligations than standard personal data — think health records, biometrics, financial account details. If your product touches any of these, the bar is higher: stricter consent requirements, more rigorous security controls, and in some jurisdictions, a formal risk assessment before you launch. This isn't a trick question — if any of these are in your product, even as a secondary data type, they're worth flagging now.",
+    "answers": [
+      {
+        "label": "Health, medical, or wellness data",
+        "text": "This includes fitness tracking, mental health apps, dietary tools — not just clinical medical records. Elevated privacy priority. A formal impact assessment is often required before launch."
+      },
+      {
+        "label": "Financial account or payment data",
+        "text": "This is about storing or processing financial account data in your product itself — not using a payment provider like Stripe to take payments. If you're holding account numbers, transaction history, or similar, elevated privacy rules apply."
+      },
+      {
+        "label": "Precise location data",
+        "text": "GPS-level or real-time location tracking — not city-level. The more precise the tracking, the higher the obligations, particularly around consent and what you can use the data for."
+      },
+      {
+        "label": "Biometric data (face recognition, fingerprints, voice identification)",
+        "text": "Among the most tightly regulated categories. Biometric data is uniquely sensitive because unlike a password, it can't be changed if compromised. Several US states have specific laws with real teeth here — private lawsuits, not just regulatory fines."
+      },
+      {
+        "label": "Sexual orientation, gender identity, or relationship data",
+        "text": "Appears in dating apps, HR platforms, and social products. Often not the primary data type but embedded in profile fields or inferred from behaviour. Elevated consent requirements apply."
+      },
+      {
+        "label": "Political views, religious beliefs, trade union membership, or criminal records",
+        "text": "Common in HR tools, background check products, civic tech, and news platforms. Same elevated obligations as health data. Criminal record data has additional restrictions beyond the standard rules."
+      },
+      {
+        "label": "Data about people under 16",
+        "text": "This doesn't just mean products aimed at children. If your product holds data about under-16s — even because parents share it, or clients send it — children's protections apply to that data. Triggers the children's questions later in the assessment."
+      },
+      {
+        "label": "None of the above",
+        "text": "Standard privacy obligations based on what you selected in Q3. If you're unsure whether something on this list applies to your product, flag it — it's better to investigate than to miss it."
+      }
+    ]
+  },
+
+  "q5": {
+    "why": "'AI' here means any system that uses machine learning or automated decision logic — recommendation engines, fraud detection, pricing algorithms, content classifiers — not just obvious AI features like chatbots. It also includes third-party AI tools you've integrated. The reason this matters: if an AI component in your product makes or contributes to a decision about a user, you're still responsible for that decision regardless of which vendor's model you're using.",
+    "answers": [
+      {
+        "label": "Yes",
+        "text": "Q6 asks what the AI actually does — the type of AI use matters far more than whether AI is present at all. An AI that generates product descriptions is a very different compliance situation from one that decides whether to approve a loan."
+      },
+      {
+        "label": "No",
+        "text": "AI risk won't be flagged. Worth noting: rule-based systems — deterministic scoring, fixed eligibility logic — also count as automated decision-making under some regulations, even without machine learning. If your product makes automated decisions about individuals via any kind of algorithm, think about whether that applies."
+      },
+      {
+        "label": "I'm not sure — it might use a third-party AI tool or automated system",
+        "text": "Treated as Yes. Third-party AI integrations — OpenAI, Google, Anthropic, and others — count as AI use from a compliance standpoint. You can't pass your obligations to the vendor. If you're genuinely not sure whether a component uses AI, assume it does."
+      }
+    ]
+  },
+
+  "q6": {
+    "why": "What the AI does matters far more than whether AI is present. An AI writing assistant that helps draft emails sits at one end of the risk spectrum. An AI that determines whether a job applicant progresses, or whether an account gets restricted, sits at the other. Select everything that applies — a product can do multiple things.",
+    "answers": [
+      {
+        "label": "Creates content that users see, read, or act on (text, images, audio, summaries, or suggestions generated by the AI)",
+        "text": "Think chatbots, AI-generated summaries, content recommendations presented as AI. Users often have the right to know when content is AI-generated, particularly in EU markets."
+      },
+      {
+        "label": "Determines an outcome for a specific person — whether they're approved or rejected, what price they're charged, whether their account is restricted, or whether a group is treated differently based on predicted characteristics",
+        "text": "This is the highest-risk AI category — and the most commonly missed. It applies whether the decision is fully automatic or reviewed by a human first. Common in hiring tools, credit products, healthcare, insurance, and content moderation systems. If your product makes this kind of call about a person, flag it here."
+      },
+      {
+        "label": "Shapes what individual users see or experience — personalised feeds, search results, ranked content, recommendations",
+        "text": "Recommender systems and personalised content feeds. In the EU, platforms using these must give users a way to opt out of personalisation. Consumer-facing personalisation can also trigger online safety considerations because algorithmic amplification can itself cause harm."
+      },
+      {
+        "label": "Processes or evaluates content or data — analyses posts, documents, signals, or behaviour to detect, categorise, or filter",
+        "text": "Think spam detection, sentiment analysis, image classification, fraud detection. Lower risk than decision-making — unless the classification directly determines what a person can access, in which case it belongs in the option above."
+      },
+      {
+        "label": "Runs behind the scenes — users don't see or feel its effect directly",
+        "text": "Internal operations only — infrastructure optimisation, internal routing, back-end analytics. No AI flag if this is the only thing you've selected. If the AI's outputs eventually feed into user-facing decisions, consider whether one of the other options applies too."
+      }
+    ]
+  },
+
+  "q7": {
+    "why": "Online safety rules kick in when users can do things — post content, message each other, leave reviews. If your product hosts any of this, you have responsibilities around what happens there: processes for handling illegal content, basic moderation policies, and for larger platforms, more extensive obligations. Small platforms aren't exempt — the obligations scale with size, but they apply from the start.",
+    "answers": [
+      {
+        "label": "Yes — users can post, comment, or share content publicly or in groups",
+        "text": "The strongest online safety signal. Social platforms, community forums, content-sharing apps — anything where users post publicly. You'll need content policies and processes for handling illegal or harmful content."
+      },
+      {
+        "label": "Yes — users can send direct messages to each other",
+        "text": "DMs create contact risk, particularly where children might be present on the platform. Direct messaging in a product where under-18s are also users is one of the highest-priority scenarios in the children's safety rules."
+      },
+      {
+        "label": "Yes — users can review, rate, or respond to other users' content or profiles",
+        "text": "Review platforms, rating systems, response threads. User reviews count as user-generated content, which means content moderation obligations apply even if the volume is small."
+      },
+      {
+        "label": "No — users only interact with content we produce and control",
+        "text": "No user-generated content. Online safety obligations are much lighter — though if your product uses AI personalisation to shape what consumers see, that can still be relevant via the AI questions above."
+      }
+    ]
+  },
+
+  "q8a": {
+    "why": "There's a big difference between a product designed for children and one that incidentally holds children's data. A children's tutoring marketplace has to meet a completely different standard than a B2B HR platform that occasionally receives employee records containing minor dependants. Both have obligations — but the scope and cost are very different. This question helps route you to the right level of scrutiny.",
+    "answers": [
+      {
+        "label": "The product is designed for or marketed to children or teenagers",
+        "text": "The most compliance-intensive scenario. Parental consent mechanisms, strict privacy defaults, no behavioural advertising, age-appropriate design throughout — these aren't optional. Build this in from the start; retrofitting it is expensive and rarely done well."
+      },
+      {
+        "label": "Children's data is incidentally included — for example, we process family accounts, or clients send us data that may include minors",
+        "text": "You still have obligations — you can't opt out of children's data rules because kids weren't your intended audience. You need to know which records relate to under-16s and handle them differently: tighter data minimisation, shorter retention, parental consent where required."
+      },
+      {
+        "label": "Not sure",
+        "text": "Treated cautiously — children's area flagged. 'Not sure whether children's data is in your system' isn't a defensible position with regulators. Investigate before launch."
+      }
+    ]
+  },
+
+  "q8b": {
+    "why": "Even if you haven't collected data tagged as 'children's data', minors may still use your product. The UK's children's design rules apply if children are a meaningful part of your user base — regulators interpret this broadly. If teenagers realistically use your platform, the features they access need to meet age-appropriate design standards, even if the product isn't aimed at them.",
+    "answers": [
+      {
+        "label": "Yes — it's designed for or marketed to children or teenagers",
+        "text": "Full children's obligations apply — parental consent, strict privacy defaults, no profiling for ads, age-appropriate design throughout. The most intensive configuration."
+      },
+      {
+        "label": "Possibly — minors are a realistic part of our user base, even if not the primary audience",
+        "text": "Children's rules apply to the features minors access, not the whole platform. A general consumer game, a fan community, a social app — if teenagers realistically use it, design those parts with them in mind. Flagged at standard priority, not critical."
+      },
+      {
+        "label": "No — access is restricted to adults, or minors are not a realistic user of this product",
+        "text": "Children's area cleared. If you have age verification in place, it needs to actually work — a checkbox asking users to confirm they're over 18 doesn't count under the UK's rules or US children's law. Real age assurance is a meaningful technical commitment."
+      },
+      {
+        "label": "Not sure",
+        "text": "Treated cautiously — children's area flagged. Look at your sign-up data, your marketing materials, and what your product is for. Regulators consider all of this when assessing whether children are likely users."
+      }
+    ]
+  },
+
+  "q9": {
+    "why": "This question doesn't change which risk areas apply — it changes which specific rules apply within them, and how urgently. The EU has the most comprehensive set of requirements across all four areas. The UK has its own parallel framework. The US has no single federal privacy law but a growing set of state laws. Wherever your users are, that's the jurisdiction that governs your obligations — regardless of where your company is based.",
+    "answers": [
+      {
+        "label": "Primarily United States",
+        "text": "Privacy law varies by state — California's rules are the most stringent and effectively set a national standard for consumer products. Children's rules apply federally. State-level AI laws are emerging in Colorado, Illinois, and others. If you have any California users, California's rules apply regardless of where you're incorporated."
+      },
+      {
+        "label": "United Kingdom",
+        "text": "UK privacy law is closely aligned with the EU's framework but has diverged in some areas since Brexit. The UK Online Safety Act covers user-to-user platforms. The UK's children's design code is one of the most detailed children's frameworks in the world."
+      },
+      {
+        "label": "European Union",
+        "text": "The EU has the most comprehensive framework across all four areas — privacy, AI, online safety, and children. These rules have extraterritorial reach: if EU residents can use your product, they likely apply to you regardless of where your company is based."
+      },
+      {
+        "label": "Global or multiple regions",
+        "text": "Treated as EU + UK + US combined — the most stringent standards apply across all flagged areas. The right approach for any product with international reach."
+      },
+      {
+        "label": "I'm not sure",
+        "text": "Same as global — most stringent standards applied. If EU residents can use your product, EU rules likely apply. Better to assess to the higher standard than to assume they don't."
+      }
+    ]
+  }
+}
