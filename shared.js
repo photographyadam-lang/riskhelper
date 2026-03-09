@@ -58,7 +58,6 @@
       acceptBtn.addEventListener('click', () => {
         setConsent('accepted');
         hideBanner();
-        // Future: initialise analytics here after consent
       });
     }
     if (rejectBtn) {
