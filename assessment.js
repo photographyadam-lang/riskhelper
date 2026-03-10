@@ -38,14 +38,22 @@ function boot() {
 
   const agreeCheckbox = document.getElementById('agree-disclaimer');
   const startBtn = document.getElementById('btn-start');
+  const startWarning = document.getElementById('start-warning');
 
-  if (agreeCheckbox && startBtn) {
+  if (agreeCheckbox && startWarning) {
     agreeCheckbox.addEventListener('change', (e) => {
-      startBtn.disabled = !e.target.checked;
+      if (e.target.checked) {
+        startWarning.classList.add('hidden');
+      }
     });
   }
 
-  startBtn.addEventListener('click', () => {
+  startBtn.addEventListener('click', (e) => {
+    if (agreeCheckbox && !agreeCheckbox.checked) {
+      e.preventDefault();
+      startWarning.classList.remove('hidden');
+      return;
+    }
     show('screen-questions');
     render();
   });
