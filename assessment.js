@@ -302,6 +302,7 @@ function updateSubmit(answered, total) {
   const hint = document.getElementById('submit-hint');
   const done = total > 0 && answered === total;
   btn.disabled = !done;
+  btn.setAttribute('aria-disabled', !done);
   hint.textContent = done
     ? 'All questions answered — ready to see results'
     : `${total - answered} question${total - answered !== 1 ? 's' : ''} remaining`;
@@ -608,18 +609,64 @@ function showResults() {
 
   let nextActionsText = '';
   if (anyElevated) {
-    nextActionsText = "As one or more risk domains are elevated, these areas should be investigated to better understand them before development starts. These areas may require additional time and guidance to ensure your product/feature/idea complies with regulations ahead of launch. Contact your legal/compliance support early. Note that risks outside the scope of this assessment may still exist and should be reviewed.";
+    nextActionsText = `
+<p style="margin-bottom: 12px;">One or more risk domains have been flagged in your assessment. These areas carry meaningful regulatory and design implications and are worth addressing before engineering starts, when changes are cheapest/easiest to make.</p>
+<p style="margin-bottom: 16px;">The steps below are general starting points, not legal advice. For anything complex or high-stakes, work with a qualified legal or compliance professional.</p>
+
+<h5 style="color: #fff; font-size: 15px; margin-bottom: 8px;">Privacy & Data Protection</h5>
+<p style="margin-bottom: 8px;"><strong>If flagged:</strong> Start by mapping the personal data your product will actually collect and why. For each data type, ask: do we need this to make the feature work, or are we collecting it because we can? Document your answers. This is the foundation of any privacy review, and doing it early surfaces decisions that are much harder to reverse after launch.</p>
+<p style="margin-bottom: 8px;">Review any third-party tools or SDKs in your stack that will touch personal data — analytics platforms, session recorders, AI APIs, marketing tools. Understand what data each one collects and where it goes. Surprises here are common.</p>
+<p style="margin-bottom: 8px;">Check whether your product will serve users in the EU, UK, or California. If yes, GDPR, UK GDPR, and CCPA are likely to be relevant to how you structure consent, data subject rights, and retention.</p>
+<p style="margin-bottom: 24px;"><strong>If elevated:</strong> Everything above, with more urgency. Elevated Privacy typically means your product collects sensitive data categories (health, financial, biometric, location, or data relating to children) or handles data flows that carry higher regulatory exposure. Bring legal or privacy counsel in early — ideally before your technical architecture is set. Decisions made now about data storage, retention, and access controls are significantly easier to change on a whiteboard than in production.</p>
+
+<h5 style="color: #fff; font-size: 15px; margin-bottom: 8px;">Online Safety & Harm Prevention</h5>
+<p style="margin-bottom: 8px;"><strong>If flagged:</strong> Walk through your product's intended features and identify anywhere users can create content, contact each other, or have content served to them algorithmically. For each of those surfaces, ask: what's the realistic worst-case use of this feature? Harassment, fraud, illegal content distribution, and manipulation are the four areas regulators focus on most.</p>
+<p style="margin-bottom: 8px;">Start thinking about moderation: not just whether you'll have it, but how it will work, who's responsible for it, and how users can report problems. Products that launch without a moderation plan tend to build one reactively after something goes wrong — which is a worse starting point in every way.</p>
+<p style="margin-bottom: 8px;">If your product operates in the UK or EU, the Online Safety Act and Digital Services Act may impose obligations depending on your product type and scale — clarifying which category your product falls into is worth discussing with counsel.</p>
+<p style="margin-bottom: 24px;"><strong>If elevated:</strong> Elevated Online Safety usually means your product has significant UGC, a recommendation or ranking system, or strong signals that vulnerable users (including minors) are likely to be present. At this level, a lightweight think-through isn't enough. You should make explicit design decisions about how the product handles harmful content and protects users, and document those decisions. Regulatory scrutiny in this domain has increased significantly in the last two years and shows no sign of slowing.</p>
+
+<h5 style="color: #fff; font-size: 15px; margin-bottom: 8px;">AI & Algorithmic Risk</h5>
+<p style="margin-bottom: 8px;"><strong>If flagged:</strong> Identify every place in your product where an AI system influences a decision or outcome for a user. Be specific: what is the system doing, what data is it using, and what does a wrong output look like for the person on the receiving end?</p>
+<p style="margin-bottom: 8px;">For third-party AI tools and APIs you're integrating: read the documentation on how the model was trained, what its known limitations are, and what the vendor's terms say about your responsibilities for how it's used. Many teams integrate AI tools without fully understanding what they're signing up for.</p>
+<p style="margin-bottom: 8px;">Start thinking about how you'll detect and respond to AI errors at scale. A single bad recommendation is a bug. A systematic pattern of bad recommendations affecting certain user groups is a regulatory and reputational problem.</p>
+<p style="margin-bottom: 24px;"><strong>If elevated:</strong> Elevated AI Risk means your product is using AI in ways that make consequential decisions about users — their access, their content, their opportunities, or their safety. In these cases, documenting your design decisions matters: how you evaluated the model, what safeguards are in place, and whether a human can review or override the outputs. The EU AI Act's requirements for high-risk AI systems provide a useful reference framework here, regardless of whether EU law applies to you directly.</p>
+
+<h5 style="color: #fff; font-size: 15px; margin-bottom: 8px;">Children & Minors</h5>
+<p style="margin-bottom: 8px;"><strong>If flagged:</strong> The most important first step is being honest about who will actually use your product — not just who you're building it for. If there's any realistic chance minors could access it, the design decisions you make now matter. Data minimisation, default privacy settings, and avoiding manipulative design patterns (endless scroll, streaks, social pressure mechanics) are easier to build in from the start than to retrofit.</p>
+<p style="margin-bottom: 8px;">Review whether COPPA applies to your product if it operates in the US and could be used by children under 13. If you're in the UK or EU, the Children's Code and emerging EU frameworks set a higher bar: products "likely to be accessed by children" must be designed with their best interests as a default, not as an afterthought.</p>
+<p style="margin-bottom: 24px;"><strong>If elevated:</strong> Elevated Children risk means either your product is clearly directed at minors or multiple signals suggest a significant presence of minors. At this level, age assurance (verification or estimation) is worth exploring — understanding what your options are, what the friction tradeoffs look like, and what your legal exposure is if you don't implement it. This is also the area where regulatory scrutiny is most unforgiving. Bring qualified counsel in early and document your decision-making.</p>
+
+<p style="margin-bottom: 0;"><strong>Across all flagged domains:</strong> the goal right now isn't to solve everything. It's to understand what you're dealing with before you build. The decisions that matter most — data architecture, product design, third-party integrations — are all still ahead of you. That's exactly when a Risk Helper assessment is most useful.</p>
+`;
   } else if (anyFlagged) {
-    nextActionsText = "As one or more risk domains are flagged, these areas will likely benefit from further investigation and consideration. We suggest contacting your legal/compliance support sufficiently in advance of any mandated compliance review to get their input. Note that risks outside the scope of this assessment may still exist and should be reviewed.";
+    nextActionsText = `As one or more risk domains are flagged, these areas will likely benefit from further investigation and consideration. We suggest contacting your legal/compliance support sufficiently in advance of any mandated compliance review to get their input. Note that risks outside the scope of this assessment may still exist and should be reviewed.`;
   } else {
-    nextActionsText = "Based on your answers, the product appears to be lower risk for privacy, online safety and harm prevention, AI risk, and risks related to children. It is important that all products be reviewed for compliance before launch, and this assessment is not a substitute for that. Note that risks outside the scope of this assessment may still exist and should be reviewed.";
+    nextActionsText = `Based on your answers, the product appears to be lower risk for privacy, online safety and harm prevention, AI risk, and risks related to children. It is important that all products be reviewed for compliance before launch, and this assessment is not a substitute for that. Note that risks outside the scope of this assessment may still exist and should be reviewed.`;
   }
 
   summaryHTML += `
-    <div style="margin-top: 24px; background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px; border-left: 4px solid var(--blue);">
-        <h4 style="color: #fff; margin-bottom: 8px; font-size: 16px;">Suggest Next Actions</h4>
-        <p style="color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.5;">${nextActionsText}</p>
-    </div>
+    <details style="margin-top: 24px; background: rgba(255,255,255,0.1); border-radius: 8px; border-left: 4px solid var(--blue); cursor: pointer;" class="next-actions-details">
+        <summary style="padding: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
+          <h4 style="color: #fff; margin: 0; font-size: 16px;">Suggest Next Actions</h4>
+          <span class="chevron" style="color: #fff; font-size: 12px; transition: transform 0.2s;">▼</span>
+        </summary>
+        <div style="padding: 16px; padding-top: 0; color: #fff; font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="padding-top: 16px;">
+            ${anyElevated ? nextActionsText : '<p style="margin: 0;">' + nextActionsText + '</p>'}
+          </div>
+        </div>
+    </details>
+    <style>
+      details.next-actions-details p {
+        color: #fff;
+      }
+      details.next-actions-details > summary::-webkit-details-marker {
+        display: none;
+      }
+      details.next-actions-details[open] > summary .chevron {
+        transform: rotate(180deg);
+      }
+    </style>
   `;
 
   if (summaryContainer) {
@@ -659,6 +706,107 @@ function restart() {
   render();
   show('screen-questions');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── DOWNLOAD RESULTS ──────────────────────────────────────────────────────────
+function downloadResults(e) {
+  if (e) e.preventDefault();
+  
+  const cfg = state.config;
+  const results = evalRouting();
+  const dateStr = new Date().toLocaleString();
+  
+  let md = `# Risk Assessment Results\n**Generated:** ${dateStr}\n\n`;
+  
+  md += `## Summary of Assessment Process\n`;
+  md += `The purpose of the assessment is to uncover risk early in the product development lifecycle in the ideation and early design phase. It is designed to provide the user with information early to help them improve their idea, select among ideas, and better plan the later stages of product development.\n\n`;
+  md += `These are the results of an assessment in which the user completed a set of questions on risks related to Privacy and Data Protection, AI and Algorithmic Risk, Online Safety and Harm Prevention, and Children and Minors. Other risk areas are out of scope of the assessment and were not asked about.\n\n`;
+  md += `This is directional guidance only, and as this is the early stage of product development, the final product is likely to change from its early design/idea to the released version. Assessment of any product or feature by a qualified professional ahead of launch is highly recommended and may be required by law.\n\n`;
+  
+  md += `--- \n\n## Summary of Results\n\n`;
+  Object.keys(cfg.domains).forEach(key => {
+    const domain = cfg.domains[key];
+    const res = results[key] || { flagged: false, priority: null };
+    let status = 'Not flagged';
+    if (res.flagged) {
+      const p = cfg.priorities[res.priority]?.label || res.priority;
+      status = `**Flagged** (${p})`;
+    }
+    md += `### ${domain.label}\nStatus: ${status}\n\n`;
+    
+    if (res.flagged) {
+      const triggers = buildTriggers(key, state.answers);
+      if (triggers.length > 0) {
+        md += `*What contributed to this result:*\n`;
+        triggers.forEach(t => {
+          md += `- **${t.qid}** (${t.answer}): ${t.effect}\n`;
+        });
+        md += `\n`;
+      }
+    }
+  });
+  
+  md += `## Detailed Answers\n\n`;
+  
+  cfg.questions.forEach(q => {
+    // Check if the question was active and answered
+    const active = evalShowIf(q.showIf);
+    const ans = state.answers[q.id];
+    const answered = active && (
+      (q.type === 'single' && ans && ans !== '') ||
+      (q.type === 'multi' && Array.isArray(ans) && ans.length > 0)
+    );
+    
+    if (answered) {
+      md += `**${q.id.toUpperCase()}: ${q.text}**\n`;
+      
+      let answerLabels = [];
+      if (q.type === 'single') {
+        const opt = q.options.find(o => o.value === ans);
+        answerLabels.push(opt ? opt.label : ans);
+      } else if (q.type === 'multi') {
+        ans.forEach(val => {
+          const opt = q.options.find(o => o.value === val);
+          if (opt) answerLabels.push(`- ${opt.label}`);
+          else answerLabels.push(`- ${val}`);
+        });
+      }
+      
+      if (q.type === 'single') {
+        md += `*Answer:* ${answerLabels[0]}\n\n`;
+      } else {
+        md += `*Answers:*\n${answerLabels.join('\n')}\n\n`;
+      }
+    }
+  });
+
+  md += `---\n\n## Metadata for AI Analysis\n\n`;
+  md += `You should append the following metadata to the assessment results:\n\n`;
+  
+  md += `### Mapping the "Why" and "Priority"\n`;
+  md += `- **Priority Definitions:** Explicitly define what the statuses mean. For instance, Elevated means a legal review is recommended before launch, while Standard suggests an assessment at the design phase.\n`;
+  md += `- **The "Why We’re Asking" Logic:** For every flagged question, pull the corresponding "Why we're asking" text from your reference documentation. For example, if Q1b is flagged, the model should know this is often the difference between a simple and intensive review because third parties have rights even if they aren't customers.\n`;
+  md += `- **Regulatory Jurisdictions:** Since you mentioned Canada (which is not in the current Level 0 logic), you should inform the model that while the tool currently focuses on GDPR (EU), UK GDPR, and US State Laws (like CCPA), it needs to extrapolate similar principles for PIPEDA (Canada).\n`;
+  md += `- **Out of Scope Guardrails:** Provide the list of what the tool does not cover (e.g., SOC 2, PCI-DSS, ISO 27001) so the LLM doesn't give irrelevant advice regarding information security or financial compliance.\n\n`;
+  
+  md += `### Special Case Triggers\n`;
+  md += `Provide the model with the "Hardcoded Logic" for complex risks:\n`;
+  md += `- **Algorithmic Harm:** If the product personalizes content for consumers but has no user-generated content, it still carries risk.\n`;
+  md += `- **Contact Risk:** If the Children domain is flagged and "direct messaging" is active, the risk is elevated because of adult-to-minor contact potential.\n\n`;
+
+  md += `---\n*Disclaimer: This result is directional guidance only. It is not legal advice and is not a substitute for review by qualified legal or compliance professionals.*\n`;
+
+  // Create a blob and download
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'risk_assessment_results.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // Delay revocation to ensure the browser has time to map the download attribute name
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
