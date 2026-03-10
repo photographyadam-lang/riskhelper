@@ -36,7 +36,16 @@ function boot() {
   buildQuestions();
   buildLiveDomainPanel();
 
-  document.getElementById('btn-start').addEventListener('click', () => {
+  const agreeCheckbox = document.getElementById('agree-disclaimer');
+  const startBtn = document.getElementById('btn-start');
+
+  if (agreeCheckbox && startBtn) {
+    agreeCheckbox.addEventListener('change', (e) => {
+      startBtn.disabled = !e.target.checked;
+    });
+  }
+
+  startBtn.addEventListener('click', () => {
     show('screen-questions');
     render();
   });

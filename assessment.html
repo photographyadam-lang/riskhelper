@@ -98,9 +98,13 @@
             </div>
           </div>
         </div>
-        <button id="btn-start" class="btn btn--primary btn--lg">Start assessment →</button>
-        <p class="intro-disclaimer">Directional guidance only — not legal advice. Always engage qualified legal or
-          compliance professionals before launch.</p>
+        <div class="intro-agreement">
+          <label for="agree-disclaimer" class="agreement-label">
+            <input type="checkbox" id="agree-disclaimer" name="agree-disclaimer">
+            <span class="intro-disclaimer">Risk Helper assessments are informational tools designed to help identify areas for further review. Nothing in this assessment constitutes legal advice. Regulatory applicability depends on your specific product, data practices, and jurisdictions. Consult qualified legal or compliance counsel before making compliance decisions.</span>
+          </label>
+        </div>
+        <button id="btn-start" class="btn btn--primary btn--lg" disabled>Start assessment →</button>
       </div>
     </section>
 
