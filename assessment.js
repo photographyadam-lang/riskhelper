@@ -435,7 +435,9 @@ function buildTriggers(domainKey, answers) {
 
   const add = (qid, val, effect) => {
     if (has(qid, val)) {
-      triggers.push({ qid: qid.toUpperCase(), answer: getLabel(qid, val), effect });
+      const q = cfg.questions.find(q => q.id === qid);
+      const text = q ? q.text : '';
+      triggers.push({ qid: qid.toUpperCase(), text, answer: getLabel(qid, val), effect });
     }
   };
 
@@ -464,7 +466,7 @@ function buildTriggers(domainKey, answers) {
     const q6 = answers.q6 || [], q7 = answers.q7 || [], q1a = answers.q1a || [], q1b = answers.q1b;
     if (q6.includes('shapes') && (q7.includes('no') || !q7.length) &&
       (q1a.includes('consumers') || q1b === 'yes' || q1b === 'notsure')) {
-      triggers.push({ qid: 'Q6+Q1', answer: 'AI shapes + consumer-facing + no UGC', effect: 'Also flags Online Safety via algorithmic harm route' });
+      triggers.push({ qid: 'Q6+Q1', text: 'Derived from multiple questions', answer: 'AI shapes + consumer-facing + no UGC', effect: 'Also flags Online Safety via algorithmic harm route' });
     }
   }
 
@@ -476,7 +478,7 @@ function buildTriggers(domainKey, answers) {
     const q6 = answers.q6 || [], q7 = answers.q7 || [], q1a = answers.q1a || [], q1b = answers.q1b;
     const noUGC = q7.includes('no') || !q7.length;
     if (q6.includes('shapes') && noUGC && (q1a.includes('consumers') || q1b === 'yes' || q1b === 'notsure')) {
-      triggers.push({ qid: 'Q6+Q1', answer: 'AI personalisation, consumer-facing, no UGC', effect: 'Flags Online Safety via algorithmic harm route' });
+      triggers.push({ qid: 'Q6+Q1', text: 'Derived from multiple questions', answer: 'AI personalisation, consumer-facing, no UGC', effect: 'Flags Online Safety via algorithmic harm route' });
     }
   }
 
@@ -528,11 +530,12 @@ function showResults() {
         <div class="trigger-table-wrap">
           <div class="trigger-table-label">What contributed to this result</div>
           <table class="trigger-table">
-            <thead><tr><th>Question</th><th>Your answer</th><th>Effect</th></tr></thead>
+            <thead><tr><th>Question</th><th>Text</th><th>Your answer</th><th>Effect</th></tr></thead>
             <tbody>
               ${triggers.map(t => `
                 <tr>
                   <td class="trigger-qid">${t.qid}</td>
+                  <td class="trigger-text">${t.text}</td>
                   <td class="trigger-answer">${t.answer}</td>
                   <td class="trigger-effect">${t.effect}</td>
                 </tr>`).join('')}
@@ -647,10 +650,10 @@ function showResults() {
   summaryHTML += `
     <details style="margin-top: 24px; background: rgba(255,255,255,0.1); border-radius: 8px; border-left: 4px solid var(--blue); cursor: pointer;" class="next-actions-details">
         <summary style="padding: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none;">
-          <h4 style="color: #fff; margin: 0; font-size: 16px;">Suggest Next Actions</h4>
+          <h4 style="color: #fff; margin: 0; font-size: 16px;">Suggested Next Actions</h4>
           <span class="chevron" style="color: #fff; font-size: 12px; transition: transform 0.2s;">▼</span>
         </summary>
-        <div style="padding: 16px; padding-top: 0; color: #fff; font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="padding: 16px; padding-top: 0; color: rgba(255,255,255,0.65); font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1);">
           <div style="padding-top: 16px;">
             ${anyElevated ? nextActionsText : '<p style="margin: 0;">' + nextActionsText + '</p>'}
           </div>
@@ -658,7 +661,7 @@ function showResults() {
     </details>
     <style>
       details.next-actions-details p {
-        color: #fff;
+        color: rgba(255,255,255,0.65);
       }
       details.next-actions-details > summary::-webkit-details-marker {
         display: none;
@@ -796,17 +799,20 @@ function downloadResults(e) {
 
   md += `---\n*Disclaimer: This result is directional guidance only. It is not legal advice and is not a substitute for review by qualified legal or compliance professionals.*\n`;
 
-  // Create a blob and download
-  const blob = new Blob([md], { type: 'text/markdown' });
-  const url = URL.createObjectURL(blob);
+  // Use a data URI instead of a Blob to avoid UUID race conditions / extension interference
+  const base64 = btoa(unescape(encodeURIComponent(md)));
+  const url = `data:text/markdown;charset=utf-8;base64,${base64}`;
+  
   const a = document.createElement('a');
   a.href = url;
   a.download = 'risk_assessment_results.md';
+  // Some browsers require the element to be in the DOM before clicking
+  a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
-  // Delay revocation to ensure the browser has time to map the download attribute name
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  
+  // Cleanup
+  setTimeout(() => document.body.removeChild(a), 100);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
